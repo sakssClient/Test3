@@ -19,7 +19,9 @@ const updateEmbeddings = async (data: any) => {
         collection_name: collectionName,
         data: data,
     });
-    console.log(`File ${data.project_id__file_name} updated successfully`);
+    data.foreach((ele:any)=>{
+        console.log(`File ${ele.project_id__file_name} updated successfully`);
+    })
 };
 
 const newEmbeddings = async (data: any) => {
@@ -30,7 +32,9 @@ const newEmbeddings = async (data: any) => {
         collection_name: collectionName,
         data: data,
     });
-    console.log(`File ${data.project_id__file_name} inserted successfully`);
+    data.foreach((ele:any)=>{
+        console.log(`File ${ele.project_id__file_name} inserted successfully`);
+    })
 };
 
 const deleteEmbeddings = async (fileName: any) => {

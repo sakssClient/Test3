@@ -326,3 +326,18 @@ export const addTimeSeries = async (req: any, res: Response) => {
 		res.send("Internal Server Error").status(501);
 	}
 }
+
+
+export const getAllFoodItems2 = async (req: any, res: Response) => {
+	try {
+		const foodItems = await mealItem.find().sort('Name');
+		let allItemNames = [];
+		for (let i = 0; i < foodItems.length; i++) {
+			allItemNames.push({ "Name": foodItems[i].Name, "Id": foodItems[i]._id, "Img": foodItems[i].Image });
+		}
+		return res.send(allItemNames).status(200);
+	} catch (err) {
+		console.log(err);
+		return res.send({ "Error": "Internal Server Error" }).status(501);
+	}
+}
